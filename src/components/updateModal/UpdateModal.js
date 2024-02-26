@@ -37,20 +37,34 @@ function UpdateModal({ setShowModal, user }) {
     const handleUpdate = async () => {
         if(name){
             try{
-                const docRef = doc(db, 'users', user.uid);
+                if(profileImage){
+                    const docRef = doc(db, 'users', user.uid);
+
+                    const ProfileImageRef = ref(storage, `users/${user.uid}/${Date.now()}`);
+                    await uploadBytes(ProfileImageRef, profileImage);
+                    const profileImageUrl = await getDownloadURL(ProfileImageRef);
+            
+                    const newData = {
+                        ...user,
+                        name: name,
+                        profileImage: profileImageUrl
+                    };
+
+                    await updateDoc(docRef, newData);
+                    dispatch(setUser(newData))                
+                }
+                else {
+                    const docRef = doc(db, 'users', user.uid);
+            
+                    const newData = {
+                        ...user,
+                        name: name
+                    };
+
+                    await updateDoc(docRef, newData);
+                    dispatch(setUser(newData))
+                }
         
-                const ProfileImageRef = ref(storage, `users/${user.uid}/${Date.now()}`);
-                await uploadBytes(ProfileImageRef, profileImage);
-                const profileImageUrl = await getDownloadURL(ProfileImageRef);
-        
-                const newData = {
-                    ...user,
-                    name: name,
-                    profileImage: profileImageUrl
-                };
-        
-                await updateDoc(docRef, newData);
-                dispatch(setUser(newData))                
         
                 toast.success('Profile Updated Successfully!');
                 
