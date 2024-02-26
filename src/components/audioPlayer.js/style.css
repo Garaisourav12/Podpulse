@@ -1,0 +1,111 @@
+.audio-player{
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: .5rem 1rem;
+    background-color: rgb(46, 4, 85);
+}
+
+.episode-details{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+.player-image{
+    width: 3rem;
+    height: 3rem;
+    border-radius: .2rem;
+}
+
+.play-controll{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+.audio-player button{
+    border: none;
+    cursor: pointer;
+    display: flex;
+    background: transparent;
+    color: var(--white);
+    font-size: 1.3rem;
+}
+
+input[type="range"] {
+    filter: hue-rotate(35deg);
+    height: .3rem;
+}
+.duration-bar {
+    width: 30vw;
+}
+  
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.current-time{
+    width: 45px;
+    text-align: left;
+}
+.remaining-time {
+    width: 45px;
+    text-align: right;
+}
+
+
+.volume-controll{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+  
+.sound-bar {
+    width: 15vw;
+}
+
+
+
+
+@media (max-width: 768px){
+    .player-image{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .duration-bar{
+        width: 25vw;
+    }
+    .sound-bar{
+        width: 15vw;
+    }
+    .audio-player{
+        gap: 1rem;
+    }
+    .audio-player>*{
+        gap: .5rem;
+    }
+    .current-time, .remaining-time{
+        width: 35px;
+    }
+}
+
+@media (max-width: 500px){
+    .player-image{
+        width: 2rem;
+        height: 2rem;
+    }
+    .duration-bar{
+        width: 20vw;
+    }
+    .sound-bar{
+        width: 15vw;
+    }
+    .current-time, .remaining-time{
+        width: 30px;
+    }
+}
