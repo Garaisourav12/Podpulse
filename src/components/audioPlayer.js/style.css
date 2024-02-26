@@ -20,6 +20,9 @@
     height: 3rem;
     border-radius: .2rem;
 }
+.episode-details h5{
+    font-size: .9rem;
+}
 
 .play-controll{
     display: flex;
@@ -98,6 +101,9 @@ input[type="range"] {
     .player-image{
         width: 2rem;
         height: 2rem;
+    }
+    .episode-details h5{
+        font-size: .6rem;
     }
     .duration-bar{
         width: 20vw;

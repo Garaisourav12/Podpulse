@@ -92,7 +92,7 @@ function AudioPlayer({ episode, displayImage }) {
 
             <div className="episode-details">
                 <img src={displayImage} className="player-image" />
-                <h4 className="episode">{episode.title}</h4>
+                <h5 className="episode">{episode.title}</h5>
             </div>
 
             <div className="play-controll">
