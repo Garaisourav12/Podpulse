@@ -35,7 +35,7 @@ function UpdateModal({ setShowModal, user }) {
     };
 
     const handleUpdate = async () => {
-        if(name && profileImage){
+        if(name){
             try{
                 const docRef = doc(db, 'users', user.uid);
         
