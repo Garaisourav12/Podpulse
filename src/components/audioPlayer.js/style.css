@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding: .5rem 1rem;
+    padding: .8rem 1rem;
     background-color: rgb(46, 4, 85);
 }
 
@@ -21,7 +21,7 @@
     border-radius: .2rem;
 }
 .episode-details h5{
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 .play-controll{
@@ -53,12 +53,14 @@ input[type="range"] {
 }
   
 .current-time{
-    width: 45px;
+    width: 40px;
     text-align: left;
+    font-size: .9rem;
 }
 .remaining-time {
-    width: 45px;
+    width: 49px;
     text-align: right;
+    font-size: .9rem;
 }
 
 
@@ -92,8 +94,11 @@ input[type="range"] {
     .audio-player>*{
         gap: .5rem;
     }
-    .current-time, .remaining-time{
-        width: 35px;
+    .current-time{
+        width: 31px;
+    } 
+    .remaining-time{
+        width: 39px;
     }
 }
 
@@ -103,7 +108,7 @@ input[type="range"] {
         height: 2rem;
     }
     .episode-details h5{
-        font-size: .8rem;
+        font-size: .9rem;
     }
     .duration-bar{
         width: 20vw;
@@ -111,7 +116,10 @@ input[type="range"] {
     .sound-bar{
         width: 15vw;
     }
-    .current-time, .remaining-time{
-        width: 30px;
+    .current-time{
+        width: 27px;
+    } 
+    .remaining-time{
+        width: 33px;
     }
 }
