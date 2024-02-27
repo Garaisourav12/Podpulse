@@ -92,7 +92,11 @@ function AudioPlayer({ episode, displayImage, isPlaying, setIsPlaying }) {
 
             <div className="episode-details">
                 <img src={displayImage} className="player-image" />
-                <h5 className="episode">{episode.title}</h5>
+                <h5 className="episode">
+                    <marquee behavior="" direction="" scrollamount="3">
+                        {episode.title}
+                    </marquee>
+                </h5>
             </div>
 
             <div className="play-controll">
