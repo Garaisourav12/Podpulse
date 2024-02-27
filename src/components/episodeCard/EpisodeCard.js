@@ -28,9 +28,8 @@ function EpisodeCard({ episode, index, playingEpisode, setPlayingEpisode, isPlay
             <h3 className="episode-title">{index+1}. {episode.title}</h3>
             <p className="episode-description">{episode.description}</p>
             <PlayButton
-                text={episode === playingEpisode && isPlaying ? (<><FaPause style={{paddingLeft: '.1rem'}} /></>) : (<><FaPlay /></>)}
+                text={episode === playingEpisode && isPlaying ? (<><FaPause style={{paddingLeft: '.05rem'}} /></>) : (<><FaPlay style={{paddingLeft: '.2rem'}} /></>)}
                 onClick={handlePlay}
-                // style={{width:'2.8rem'}}
             />
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/loader/Loader';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase';
@@ -9,10 +9,13 @@ import EpisodeCard from '../components/episodeCard/EpisodeCard';
 import FallbackUi from '../components/fallbackUi/FallbackUi';
 import AudioPlayer from '../components/audioPlayer.js/AudioPlayer';
 import Genres from '../components/genres/Genres';
+import WebShare from '../components/webShare/WebShare';
 
 function PodcastDetails() {
     const navigate = useNavigate();
     const { id } = useParams();
+    const location = useLocation();
+    // console.log(location);
 
     const [podcast, setPodcast] = useState(null);
     const [episodes, setEpisodes] = useState([]);
@@ -83,12 +86,19 @@ function PodcastDetails() {
                             <p className='podcast-create-by'>Created By {podcast.createBy.name}</p>
                             <Genres genres={podcast?.genres} />
                         </div>
-                        {
-                            podcast.createBy.uid===auth.currentUser.uid && <Button
-                                text='Create Episode'
-                                onClick={() => navigate(`/podcast/${id}/create-episode`)}
+                        <div className="create-share">
+                            {
+                                auth.currentUser && (podcast.createBy.uid===auth.currentUser.uid) && <Button
+                                    text='Create Episode'
+                                    onClick={() => navigate(`/podcast/${id}/create-episode`)}
+                                />
+                            }
+                            <WebShare
+                                title={podcast.title}
+                                text={podcast.description}
+                                url={location.pathname}
                             />
-                        }
+                        </div>
                     </div>
                     <div className="banner-box">
                         <img src={podcast.bannerImage} alt="" />

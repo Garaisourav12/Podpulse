@@ -43,7 +43,6 @@
 .play-button svg{
     width: 1.2rem!important;
     height: 1.2rem!important;
-    padding-left: .2rem;
 }
 
 .play-button:hover {

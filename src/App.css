@@ -31,7 +31,7 @@
 .signup-signin p{
     text-align: center;
     cursor: pointer;
-    color: rgb(86, 86, 253);
+    color: rgb(122, 122, 254);
 }
 
 .podcast-wrapper{
@@ -81,6 +81,16 @@
 }
 .podcast-title-heading{
     text-align: left!important;
+}
+.create-share{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.create-share svg{
+    font-size: 2rem;
 }
 .podcast-details-container .banner-box{
     width: 100%;

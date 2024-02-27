@@ -11,7 +11,7 @@ import Profile from './Profile';
 function SignUpSignInPage() {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
-    const [flag, setFlag] = useState(true);
+    const [flag, setFlag] = useState(false);
 
     if(loading) return <Loader />
     if(user && !error) {

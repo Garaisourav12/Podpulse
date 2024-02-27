@@ -52,7 +52,7 @@ function App() {
 
     useEffect(() => {
         const fetchPodcasts = async () => {
-            if(user && !error){
+            if(true){
                 // Update podcasts according to the auth
                 const podcastsCollectionRef = collection(db, "podcasts");
                 // console.log(podcastsCollectionRef);
@@ -68,18 +68,18 @@ function App() {
         fetchPodcasts();
 
         return fetchPodcasts;
-    }, [user])
+    }, [])
 
     return (
         <div className='app'>
             <ToastContainer />
             <Routes>
                 <Route path="/" element={<SignUpSignInPage />} />
+                <Route path="/podcasts" element={<Podcasts />} />
+                <Route path="/podcast/:id" element={<PodcastDetails />} />
                 <Route element={<PrivateRoutes />}>
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/podcasts" element={<Podcasts />} />
                     <Route path="/create-podcast" element={<CreatePodcast />} />
-                    <Route path="/podcast/:id" element={<PodcastDetails />} />
                     <Route
                         path="/podcast/:id/create-episode"
                         element={<CreateEpisode />}

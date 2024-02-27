@@ -10,10 +10,18 @@
 
 .episode-title{
     font-size: 1.2rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
 }
 
 .episode-description{
     font-size: .8rem;
     color: var(--gray);
     text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
 }
