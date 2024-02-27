@@ -21,7 +21,7 @@
 }
 
 .play-button {
-    padding: .5rem .5rem;
+    padding: .6rem;
     border: 2px solid var(--white);
     background-color: transparent;
     color: var(--white);
@@ -31,6 +31,19 @@
     text-align: center;
     cursor: pointer;
     transition-duration: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.play-button svg{
+    width: 1.2rem!important;
+    height: 1.2rem!important;
+    padding-left: .2rem;
 }
 
 .play-button:hover {

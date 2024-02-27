@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa"
 import './style.css'
 
-function AudioPlayer({ episode, displayImage }) {
-    const [isPlaying, setIsPlaying] = useState(true);
+function AudioPlayer({ episode, displayImage, isPlaying, setIsPlaying }) {
+    // const [isPlaying, setIsPlaying] = useState(true);
     const [isMuted, setIsMuted] = useState(false);
     const [volume, setVolume] = useState(1);
     const [currentTime, setCurrentTime] = useState(0);

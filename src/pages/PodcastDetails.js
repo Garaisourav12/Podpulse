@@ -20,6 +20,7 @@ function PodcastDetails() {
     const [loading, setLoading] = useState(false);
 
     const [playingEpisode, setPlayingEpisode] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     
     useEffect(() => {
@@ -98,7 +99,15 @@ function PodcastDetails() {
                     <div className="episodes-container">
                         {
                             episodes.map((episode, index) => (
-                                <EpisodeCard episode={episode} index={index} playingEpisode={playingEpisode} setPlayingEpisode={setPlayingEpisode} key={episode.id} />
+                                <EpisodeCard
+                                    episode={episode}
+                                    index={index}
+                                    playingEpisode={playingEpisode}
+                                    setPlayingEpisode={setPlayingEpisode}
+                                    isPlaying={isPlaying}
+                                    setIsPlaying={setIsPlaying}
+                                    key={episode.id}
+                                />
                             ))
                         }
                         {episodes.length===0 && <FallbackUi text={'There Is No Episode!!'} style={{height:'8rem', fontSize:'1.5rem'}} />}
@@ -106,7 +115,13 @@ function PodcastDetails() {
 
                 </div>
             </div>
-            {playingEpisode && <AudioPlayer episode={playingEpisode} displayImage={podcast.displayImage} />}
+            {playingEpisode && 
+            <AudioPlayer
+                episode={playingEpisode}
+                displayImage={podcast.displayImage}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+            />}
         </div>
     )
 }
