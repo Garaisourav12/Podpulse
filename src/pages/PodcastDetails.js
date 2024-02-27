@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/loader/Loader';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase';
@@ -14,8 +14,7 @@ import WebShare from '../components/webShare/WebShare';
 function PodcastDetails() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const location = useLocation();
-    // console.log(location);
+    console.log(`https://podpulse-rho.vercel.app/podcast/${id}`);
 
     const [podcast, setPodcast] = useState(null);
     const [episodes, setEpisodes] = useState([]);
@@ -96,7 +95,7 @@ function PodcastDetails() {
                             <WebShare
                                 title={podcast.title}
                                 text={podcast.description}
-                                url={location.pathname}
+                                url={`https://podpulse-rho.vercel.app/podcast/${id}`}
                             />
                         </div>
                     </div>
