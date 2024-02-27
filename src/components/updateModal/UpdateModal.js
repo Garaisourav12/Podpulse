@@ -98,7 +98,6 @@ function UpdateModal({ setShowModal, user }) {
                         type="file"
                         name="profile-pic"
                         id="profile-pic"
-                        // value={profileImage}
                         onChange={handleFileChange}
                         style={{display: 'none'}}
                         accept={'image/*'}
