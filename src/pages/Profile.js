@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../components/button/Button'
 import { auth } from '../firebase';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,15 +9,21 @@ import Loader from '../components/loader/Loader';
 import FallbackUi from '../components/fallbackUi/FallbackUi';
 import PodcastCard from '../components/podcastCard/PodcastCard';
 import UpdateModal from '../components/updateModal/UpdateModal';
+import { useLocation } from 'react-router-dom';
 
-function Profile() {
+function Profile({setFlag}) {
     const user = useSelector(state => state.user.user)
     const podcasts = useSelector(state => state.podcasts.podcasts)
     const dispatch = useDispatch();
+    const location = useLocation();
 
     const [showModal, setShowModal] = useState(false);
 
     const filteredPodcasts = podcasts.filter((podcast) => podcast.createBy.uid===user?.uid);
+
+    useEffect(() => {
+        setFlag(false);
+    }, [location])
 
     const editProfile = () => {
         setShowModal(true);

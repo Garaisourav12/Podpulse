@@ -15,6 +15,7 @@ function UpdateModal({ setShowModal, user }) {
     const [name, setName] = useState(user?.name);
     const [profileImage, setProfileImage] = useState('');
     const [previewImage, setPreviewImage] = useState(user.profileImage)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         if(profileImage){
@@ -35,6 +36,7 @@ function UpdateModal({ setShowModal, user }) {
     };
 
     const handleUpdate = async () => {
+        setLoading(true)
         if(name){
             try{
                 if(profileImage){
@@ -73,9 +75,13 @@ function UpdateModal({ setShowModal, user }) {
             catch(error){
                 toast.error(error.message);
             }
+            finally{
+                setLoading(false);
+            }
         }
         else{
             toast.error('Fill All The Details');
+            setLoading(false)
         }
     }
 
@@ -107,7 +113,8 @@ function UpdateModal({ setShowModal, user }) {
                     />
                     <Button
                         onClick={handleUpdate}
-                        text={ "Update" }
+                        disabled={loading}
+                        text={ loading?'Loading...':"Update" }
                     />
                     <Button
                         onClick={() => setShowModal(false)}

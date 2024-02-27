@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import { useSelector } from 'react-redux'
 import PodcastCard from '../components/podcastCard/PodcastCard'
 import Input from '../components/input/Input'
 import FallbackUi from '../components/fallbackUi/FallbackUi'
 import MultiSelect from '../components/multiSelect/MultiSelect'
+import { useLocation } from 'react-router-dom'
 
-function Podcasts() {
+function Podcasts({setFlag}) {
     const podcasts = useSelector(state => state.podcasts.podcasts)
     const [search, setSearch] = useState('')
+    const location = useLocation();
 
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [options, setOptions] = useState([
@@ -28,6 +30,10 @@ function Podcasts() {
 
         return titleMatch && genreMatch;
     });
+
+    useEffect(() => {
+        setFlag(false);
+    }, [location])
 
     return (
         <div>

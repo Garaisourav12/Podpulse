@@ -7,8 +7,9 @@ import Loader from '../components/loader/Loader';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import Profile from './Profile';
+import Welcome from '../components/welcomePage/Welcome';
 
-function SignUpSignInPage() {
+function SignUpSignInPage({welcomeFlag, setWelcomeFlag}) {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     const [flag, setFlag] = useState(false);
@@ -18,7 +19,7 @@ function SignUpSignInPage() {
         setTimeout(() => {
             navigate('/profile')
         }, 1)
-        return <Profile/>
+        return <Profile setFlag={setWelcomeFlag}/>
     }
 
     return (
@@ -34,6 +35,8 @@ function SignUpSignInPage() {
                     <p onClick={() => setFlag(!flag)}>Don't Have An Account? Click Here To Sign Up.</p>
                 )}
             </div>
+
+            {welcomeFlag && <Welcome setFlag={setWelcomeFlag} />}
         </div>
     )
 }

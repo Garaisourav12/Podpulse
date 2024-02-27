@@ -4,7 +4,7 @@ import FileInput from '../components/input/FileInput';
 import Input from '../components/input/Input';
 import Button from '../components/button/Button';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore';
 import { auth, db, storage } from '../firebase';
 import { toast } from 'react-toastify';
@@ -12,9 +12,10 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import Loader from '../components/loader/Loader';
 import FallbackUi from '../components/fallbackUi/FallbackUi';
 
-function CreateEpisode() {
+function CreateEpisode({setFlag}) {
     const { id } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [podcast, setPodcast] = useState(null);
 
@@ -24,6 +25,10 @@ function CreateEpisode() {
 
     const [loading, setLoading] = useState(false);
     const [dataLoading, setDataLoading] = useState(false);
+
+    useEffect(() => {
+        setFlag(false);
+    }, [location])
 
     const handleCreateEpisode = async (e) => {
         e.preventDefault();

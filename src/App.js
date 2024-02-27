@@ -74,19 +74,19 @@ function App() {
         <div className='app'>
             <ToastContainer />
             <Routes>
-                <Route path="/" element={<SignUpSignInPage />} />
-                <Route path="/podcasts" element={<Podcasts />} />
-                <Route path="/podcast/:id" element={<PodcastDetails />} />
+                <Route path="/" element={<SignUpSignInPage welcomeFlag={flag} setWelcomeFlag={setFlag} />} />
+                <Route path="/podcasts" element={<Podcasts setFlag={setFlag} />} />
+                <Route path="/podcast/:id" element={<PodcastDetails setFlag={setFlag} />} />
                 <Route element={<PrivateRoutes />}>
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/create-podcast" element={<CreatePodcast />} />
+                    <Route path="/profile" element={<Profile setFlag={setFlag} />} />
+                    <Route path="/create-podcast" element={<CreatePodcast setFlag={setFlag} />} />
                     <Route
                         path="/podcast/:id/create-episode"
-                        element={<CreateEpisode />}
+                        element={<CreateEpisode setFlag={setFlag} />}
                     />
                 </Route>
             </Routes>
-            {flag && <Welcome setFlag={setFlag} />}
+            {/* {flag && <Welcome setFlag={setFlag} />} */}
         </div>
     )
 }

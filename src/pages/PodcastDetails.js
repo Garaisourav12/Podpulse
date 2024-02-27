@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Loader from '../components/loader/Loader';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase';
@@ -11,10 +11,11 @@ import AudioPlayer from '../components/audioPlayer.js/AudioPlayer';
 import Genres from '../components/genres/Genres';
 import WebShare from '../components/webShare/WebShare';
 
-function PodcastDetails() {
+function PodcastDetails({setFlag}) {
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log(`https://podpulse-rho.vercel.app/podcast/${id}`);
+    const location = useLocation();
+    // console.log(`https://podpulse-rho.vercel.app/podcast/${id}`);
 
     const [podcast, setPodcast] = useState(null);
     const [episodes, setEpisodes] = useState([]);
@@ -24,7 +25,10 @@ function PodcastDetails() {
     const [playingEpisode, setPlayingEpisode] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    
+    useEffect(() => {
+        setFlag(false);
+    }, [location])
+
     useEffect(() => {
         const getPodcast = async () => {
             setLoading(true);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import Button from '../components/button/Button'
 import Input from '../components/input/Input'
@@ -9,14 +9,15 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPodcasts } from '../slices/podcastSlice';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MultiSelect from '../components/multiSelect/MultiSelect';
 
-function CreatePodcast() {
+function CreatePodcast({setFlag}) {
     const user = useSelector(state => state.user.user);
     const podcasts = useSelector(state => state.podcasts.podcasts);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -34,6 +35,10 @@ function CreatePodcast() {
     const [displayImage, setDisplayImage] = useState(null);
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setFlag(false);
+    }, [location])
 
     const handleCreatePodcast = async () => {
         if(title && desc && bannerImage && displayImage && selectedOptions.length){

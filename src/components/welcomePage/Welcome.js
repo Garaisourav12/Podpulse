@@ -6,6 +6,7 @@ function Welcome({ setFlag }) {
     const [counter, setCounter] = useState(0);
     const [percent, setPercent] = useState(0);
 
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCounter(prev => {
