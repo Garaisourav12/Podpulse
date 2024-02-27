@@ -24,11 +24,11 @@ function App() {
 
     const [flag, setFlag] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setFlag(false);
-        }, 3500)
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setFlag(false);
+    //     }, 3500)
+    // }, [])
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -86,7 +86,7 @@ function App() {
                     />
                 </Route>
             </Routes>
-            {flag && <Welcome />}
+            {flag && <Welcome setFlag={setFlag} />}
         </div>
     )
 }

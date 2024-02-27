@@ -1,8 +1,9 @@
 .navbar {
-    padding: 1rem 0;
+    padding: 1rem 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
     width: 100%;
 }
 
@@ -17,11 +18,20 @@
     z-index: -100;
 }
 
+.logo{
+    font-size: 1.8rem;
+    font-weight: 900;
+    background-image: var(--logo);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
 .links {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     width: fit-content;
 }
 
@@ -37,4 +47,14 @@
 
 .link.active {
     color: var(--white) !important;
+}
+
+
+@media (max-width: 500px){
+    .navbar {
+        gap: 1rem;
+    }
+    .logo{
+        font-size: 1.3rem;
+    }
 }

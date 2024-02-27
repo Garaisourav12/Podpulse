@@ -21,11 +21,12 @@ a {
 
 :root {
   --theme: #20062e;
-  --modal: #3e0e58;
+  /* --modal: #3e0e58; */
   --modal: linear-gradient(177.7deg, #3e0e58 1.63%, #20042f 148.18%);
   --card: linear-gradient(177.7deg, rgba(58, 129, 191, 0.3) 1.63%, rgba(65, 48, 90, 0.009) 148.18%);
-  --player: linear-gradient(177.7deg, rgba(58, 129, 191) 1.63%, rgba(65, 48, 90) 148.18%);
+  /* --player: linear-gradient(177.7deg, rgba(58, 129, 191) 1.63%, rgba(65, 48, 90) 148.18%); */
   --card-2: linear-gradient(177.7deg, rgba(58, 129, 191) 1.63%, rgba(65, 48, 90) 148.18%);
+  /* --logo: linear-gradient(177.7deg, rgb(196, 149, 254) 1.63%, rgb(114, 98, 139) 148.18%); */
   --blue: #18b2de;
   --white: #fff;
   --grey: #d7d7d7;

@@ -6,6 +6,7 @@ function Header() {
     return (
         <div className='navbar'>
             <div className="gradient" />
+            {/* <h1 className="logo">PodPulse</h1> */}
             <div className="links">
                 <NavLink to='/' className='link' activeclassname={'active'}>Sign Up</NavLink>
                 <NavLink to='/podcasts' className='link' activeclassname={'active'}>Podcasts</NavLink>

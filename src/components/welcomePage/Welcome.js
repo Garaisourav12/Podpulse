@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react'
 import './style.css'
 import welcomeBanner from '../../assets/welcome-banner.png'
 
-function Welcome() {
+function Welcome({ setFlag }) {
+    const [counter, setCounter] = useState(0);
     const [percent, setPercent] = useState(0);
 
     useEffect(() => {
-        let interval = null;
-        
-        setTimeout(() => {
-            interval = setInterval(() => {
-                setPercent(prev => {
-                    let next = prev+1;
-                    if(next === 100) clearInterval(interval);
-                    return next<=100?next:100;
-                })
-            }, 20)
-            return () => clearInterval(interval)
-        }, 550)
+        const interval = setInterval(() => {
+            setCounter(prev => {
+                let next = prev+1;
+                if(next>=20) setPercent((next-20)<=100?(next-20):100);
+                if(next === 150) setFlag(false);
+                return next;
+            })
+        }, 25)
+
+        return () => clearInterval(interval)
     }, [])
 
     return (
