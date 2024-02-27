@@ -9,7 +9,7 @@ function WebShare({ text, url, title }) {
             <RWebShare
                 data={{
                     text: text,
-                    url: url,
+                    url: 'https://podpulse-rho.vercel.app/'+url,
                     title: title,
                 }}
                 onClick={() => console.log("shared successfully!")}
