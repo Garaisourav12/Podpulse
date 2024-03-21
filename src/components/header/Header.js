@@ -8,7 +8,7 @@ function Header() {
             <div className="gradient" />
             {/* <h1 className="logo">PodPulse</h1> */}
             <div className="links">
-                <NavLink to='/' className='link' activeclassname={'active'}>Sign Up</NavLink>
+                <NavLink to='/' className='link' activeclassname={'active'}>Sign Up/Sign In</NavLink>
                 <NavLink to='/podcasts' className='link' activeclassname={'active'}>Podcasts</NavLink>
                 <NavLink to='/create-podcast' className='link' activeclassname={'active'}>Start A Podcast</NavLink>
                 <NavLink to='/profile' className='link' activeclassname={'active'}>Profile</NavLink>

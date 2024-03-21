@@ -5,11 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser, clearUser } from "../../slices/userSlice";
 
-import { auth, db, storage } from "../../firebase";
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../../firebase";
+import { fetchSignInMethodsForEmail, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 import Input from '../input/Input';
 import Button from '../button/Button';
@@ -65,18 +63,30 @@ function SignIn() {
     }
 
     const handleForgotPass = async () => {
+        setLoading(true);
         if(emailFp){
             try {
-                await sendPasswordResetEmail(auth, emailFp);
-                toast.success("Password reset email sent successfully!");
-                setEmailFp('');
-                setFlag(true)
+                const signInMethods = await fetchSignInMethodsForEmail(auth, emailFp);
+                console.log(signInMethods);
+                if(true){
+                    await sendPasswordResetEmail(auth, emailFp);
+                    toast.success("Password Reset Email Sent Successfully!");
+                    setEmailFp('');
+                    setFlag(true)
+                }
+                else{
+                    toast.error('This Email Is Not Registered!');
+                }
             } catch (error) {
                 toast.error(error.message);
+            }
+            finally{
+                setLoading(false)
             }
         }
         else{
             toast.error('Enter Email to Reset Password!')
+            setLoading(false)
         }
     }
 
